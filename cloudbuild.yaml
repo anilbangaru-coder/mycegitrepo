@@ -12,7 +12,7 @@ steps:
 # The PROJECT_ID and SHORT_SHA variables are automatically
 # replaced by Cloud Build.
 - name: 'gcr.io/cloud-builders/docker'
- id: Push
+  id: Push
   args:
   - 'push'
   - 'gcr.io/us-east4-docker.pkg.dev/silicon-cocoa-405809/appartifactrepo/cetibcoauto:$COMMIT_SHA'
