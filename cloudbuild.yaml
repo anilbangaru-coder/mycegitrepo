@@ -5,7 +5,7 @@ steps:
   args:
   - 'build'
   - '-t'
-  - 'gcr.io/us-east4-docker.pkg.dev/silicon-cocoa-405809/ceartifactrepo/cetibcoauto:$COMMIT_SHA'
+  - 'gcr.io/us-east4-docker.pkg.dev/silicon-cocoa-405809/appartifactrepo/cetibcoauto:$COMMIT_SHA'
   - '.'
 
 # This step pushes the image to Artifact Registry
