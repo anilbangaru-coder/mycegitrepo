@@ -14,7 +14,7 @@ steps:
   id: Push
   args:
   - 'push'
-  - 'gcr.io/us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto:$COMMIT_SHA'
+  - 'gcr.io/us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:$COMMIT_SHA'
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
   logging: CLOUD_LOGGING_ONLY
