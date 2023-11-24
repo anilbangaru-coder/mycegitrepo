@@ -5,7 +5,7 @@ steps:
   args:
   - 'build'
   - '-t'
-  - 'gcr.io/us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:$COMMIT_SHA'
+  - 'gcr.io/us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:latest'
   - '.'
 # This step pushes the image to Artifact Registry
 # The PROJECT_ID and SHORT_SHA variables are automatically
@@ -14,7 +14,7 @@ steps:
   id: Push
   args:
   - 'push'
-  - 'gcr.io/us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:$COMMIT_SHA'
+  - 'gcr.io/us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:latest'
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
   logging: CLOUD_LOGGING_ONLY
