@@ -18,7 +18,7 @@ steps:
  # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Run
-  args: ['run', 'deploy', 'cetibcoservice', '--image', 'us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:$SHORT_SHA', '--region', 'us-central1', '--cluster=autopilot-cluster-1']
+  args: ['run', 'deploy', '--image', 'us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:$SHORT_SHA', '--region', 'us-central1', '--cluster=autopilot-cluster-1', '--cluster-location','us-central1']
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
   logging: CLOUD_LOGGING_ONLY
