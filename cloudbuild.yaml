@@ -15,10 +15,43 @@ steps:
   args:
   - 'push'
   - 'us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:$SHORT_SHA'
- # Deploy container image to Cloud Run
+
+# [START cloudbuild-trigger-cd]
+# This step clones the ksartifactrepo repository
 - name: 'gcr.io/cloud-builders/gcloud'
-  id: Run
-  args: ['run', 'deploy', 'cetibcoauto1','--image', 'us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:$SHORT_SHA', '--region', 'us-central1', '--platform', 'gke','--cluster','autopilot-cluster-1', '--cluster-location','us-central1']
+  id: Clone ksartifactrepo repository
+  entrypoint: /bin/sh
+  args:
+  - '-c'
+  - |
+    gcloud source repos clone ksartifactrepo && \
+    cd ksartifactrepo && \
+    git checkout master && \
+    git config user.email $(gcloud auth list --filter=status:ACTIVE --format="value(account)")
+# This step generates the new manifest
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Generate Kubernetes manifest
+  entrypoint: /bin/sh
+  args:
+  - '-c'
+  - |
+     sed "s/silicon-cocoa-405809/${PROJECT_ID}/g" kubernetes.yaml.tpl | \
+     sed "s/COMMIT_SHA/${SHORT_SHA}/g" > ksartifactrepo/kubernetes.yaml
+# This step pushes the manifest back to ksartifactrepo
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Push manifest
+  entrypoint: /bin/sh
+  args:
+  - '-c'
+  - |
+    set -x && \
+    cd ksartifactrepo && \
+    git add kubernetes.yaml && \
+    git commit -m "Deploying image us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:${SHORT_SHA}
+    Built from commit ${COMMIT_SHA} of repository myapp1-app-repo
+    Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
+    git push origin master
+# [END cloudbuild-trigger-cd]
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
   logging: CLOUD_LOGGING_ONLY
