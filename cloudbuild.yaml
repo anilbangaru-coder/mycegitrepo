@@ -51,7 +51,7 @@ steps:
     Built from commit ${COMMIT_SHA} of repository myapp1-app-repo
     Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
     git push origin master
-# [END cloudbuild-trigger-cd]
+# [END cloudbuild-trigger-cd] 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
   logging: CLOUD_LOGGING_ONLY
