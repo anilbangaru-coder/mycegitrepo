@@ -31,4 +31,4 @@ spec:
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 8083
+    targetPort: 8585
