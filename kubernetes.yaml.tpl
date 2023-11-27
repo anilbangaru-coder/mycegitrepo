@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   name: cetibcoauto1-deployment
   labels:
-    app: tibcoceapp
+    app: cetibcoauto1
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: cetibcoauto1
