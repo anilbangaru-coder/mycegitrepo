@@ -21,7 +21,7 @@ spec:
             - containerPort: 80
           envFrom:
             - configMapRef:
-                name: testprojcm
+                name: testpr2cm
 ---
 kind: Service
 apiVersion: v1
