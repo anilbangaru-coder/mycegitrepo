@@ -19,6 +19,9 @@ spec:
         image: us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:COMMIT_SHA
         ports:
         - containerPort: 80
+		envFrom:
+			- configMapRef:
+				name: orderconfig
 ---
 kind: Service
 apiVersion: v1
@@ -31,4 +34,4 @@ spec:
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 8585
+    targetPort: 8686
