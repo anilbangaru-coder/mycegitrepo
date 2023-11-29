@@ -20,8 +20,8 @@ spec:
           ports:
             - containerPort: 80
           envFrom:
-            configMapRef:
-              name: orderconfig
+            - configMapRef:
+                name: orderconfig
 ---
 kind: Service
 apiVersion: v1
