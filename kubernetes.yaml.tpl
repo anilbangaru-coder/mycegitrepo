@@ -15,13 +15,13 @@ spec:
         app: cetibcoauto1
     spec:
       containers:
-      - name: cetibcoauto1
-        image: us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:COMMIT_SHA
-        ports:
-        - containerPort: 80
-		envFrom:
-		- configMapRef:
-		name: orderconfig
+        - name: cetibcoauto1
+          image: us-central1-docker.pkg.dev/silicon-cocoa-405809/northrepo/cetibcoauto1:COMMIT_SHA
+          ports:
+            - containerPort: 80
+          envFrom:
+            configMapRef:
+              name: orderconfig
 ---
 kind: Service
 apiVersion: v1
