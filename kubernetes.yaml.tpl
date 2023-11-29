@@ -21,7 +21,7 @@ spec:
             - containerPort: 80
           envFrom:
             - configMapRef:
-                name: orderconfig
+                name: testprojcm
 ---
 kind: Service
 apiVersion: v1
