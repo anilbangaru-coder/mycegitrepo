@@ -21,7 +21,7 @@ spec:
             - containerPort: 80
           envFrom:
             - configMapRef:
-                name: testproj3
+                name: configdev
 ---
 kind: Service
 apiVersion: v1
