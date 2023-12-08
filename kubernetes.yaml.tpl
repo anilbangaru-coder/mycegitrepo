@@ -26,13 +26,13 @@ spec:
             - name: secrets
               mountPath: /mnt/secrets
               readOnly: true
-    volumes:
-      - name: secrets
-        secret:
-          secretName: dev-secret
-          items:
-            - key: mydev.jks
-              path: mydev.jks
+      volumes:
+        - name: secrets
+          secret:
+            secretName: dev-secret
+            items:
+              - key: mydev.jks
+                path: mydev.jks
 ---
 kind: Service
 apiVersion: v1
