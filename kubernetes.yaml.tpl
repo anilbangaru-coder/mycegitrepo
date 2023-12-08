@@ -22,17 +22,17 @@ spec:
           envFrom:
             - configMapRef:
                 name: configdev
-		  volumeMounts:
-		    - name: secrets
-			  mountPath: /mnt/secrets
-			  readOnly: true
-	  volumes:
-	    - name: secrets
-		  secret:
-			secretName: "dev-secret"
-			items:
-			  - key: mydev.jks
-				path: mydev.jks
+          volumeMounts:
+            - name: secrets
+              mountPath: /mnt/secrets
+              readOnly: true
+    volumes:
+      - name: secrets
+        secret:
+          secretName: dev-secret
+          items:
+            - key: mydev.jks
+              path: mydev.jks
 ---
 kind: Service
 apiVersion: v1
