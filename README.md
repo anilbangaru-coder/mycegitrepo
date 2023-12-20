@@ -1,2 +1,2 @@
 # mycegitrepo
-This is my test repo -commit 69
+This is my test repo -commit test
